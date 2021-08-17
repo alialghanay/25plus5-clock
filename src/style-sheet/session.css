@@ -1,0 +1,40 @@
+.session {
+    border-radius: 10%;
+}
+
+.session-btt {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.session-btt img {
+    max-width: 25px;
+    height: auto;
+}
+
+#session-decrement{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#session-decrement img {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+#session-increment {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

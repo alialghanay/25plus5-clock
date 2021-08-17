@@ -1,0 +1,12 @@
+{
+    "currentTime": "Session",
+    "breakLength" : 5,
+    "sessionLength": 25,
+    "isPlay": true,
+    "timer": {
+        "min": "25",
+        "sec": "00"
+    },
+    "counter": 0,
+    "audio": false
+}

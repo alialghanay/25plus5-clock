@@ -1,0 +1,28 @@
+.controller-continer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.controller-continer img {
+    max-width: 25px;
+    height: auto;
+}
+
+#start_stop {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#reset {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
