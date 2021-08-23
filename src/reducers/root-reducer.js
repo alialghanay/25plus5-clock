@@ -59,15 +59,11 @@ function rootReducer(state = IniState, action){
                 ...state,
                 "counter": a
             }
-        case 'audio': 
+        case 'audio':
+        const b = state.audioState + 1;
             return{
                 ...state,
-                "audio": true
-            }
-        case 'audioC':
-            return{
-                ...state,
-                "audio": false
+                "audioState": b
             }
         case 'reset':
             return IniState

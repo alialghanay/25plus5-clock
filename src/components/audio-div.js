@@ -2,21 +2,21 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import beep from "./sound/beep.mp3";
 
-let playAudio = (a, t) => {
-    if(a){
-        t.play();
-    } else if (a) {
-        t.pause();
-        t.currentTime = 0;
-    }
-};
 
-class AudioDiv extends Component {
+class AudioDiv extends Component {    
+    componentDidUpdate(p){
+    const audioTag = document.getElementById("beep");
+    if(this.props.audioState > 0){
+        audioTag.play()
+    }else {
+        audioTag.pause();
+        audioTag.currentTime = 0;
+    }
+    }
     render() {
-        const audioTag = document.getElementById("beep");
         return ( 
             <div>
-                <audio id="beep" preload="auto" src={beep}>{(this.props.min === "00" && Number(this.props.sec) < 10) ? playAudio(this.props.audio, audioTag) : this.props.audioC}</audio>
+                <audio id="beep" preload="auto" src={beep}></audio>
             </div>
          );
     }
@@ -24,9 +24,7 @@ class AudioDiv extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        audio: state.audio,
-        min: state.timer.min,
-        sec: state.timer.sec
+        audioState: state.audioState
     }
 }
 
@@ -39,6 +37,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioDiv);
+
 
 /*
 <audio id="beep" preload="auto" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"></audio>

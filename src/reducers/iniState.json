@@ -8,5 +8,5 @@
         "sec": "00"
     },
     "counter": 0,
-    "audio": false
+    "audioState": 0
 }

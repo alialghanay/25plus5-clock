@@ -5,37 +5,34 @@ import repeatArrow from "../icons/repeat-arrow.png"
 import playPause from "../icons/play-pause.png"
 
 var interval;
-var min;
-var sec;
-var timeLabel;
 
 class Controller extends Component {
     handleClick(props, condition){
-        var currentState = min + sec;
-        var counter = 0;
+        var currentState = props.sessionLn * 60;
+        var timeLabel = props.currentTime;
         if(condition === true){
             props.startStop();
             function taskManger(){
-                const m = Math.floor(currentState / 60);
-                const s = currentState % 60;
-                props.clock(m, s, timeLabel);
                 currentState--;
-                if(m === 0 && s === 0 && counter === 0){
+                props.clock(
+                    Math.floor(currentState / 60),
+                    currentState % 60,
+                    timeLabel
+                );
+                if(currentState <= 0 && timeLabel === "Session"){
+                    props.audio();
                     currentState = 0;
-                        props.audio()
-                        props.count();
-                        timeLabel = "Break";
-                        currentState = props.breakLn * 60;
-                        counter++;
-                }else if(m === 0 && s === 0){
+                    props.count();
+                    timeLabel = "Break";
+                    currentState = props.breakLn * 60;
+                }else if(currentState <= 0){
                     currentState = 0;
                         props.audio();
                         timeLabel = "Session";
                         currentState = props.sessionLn * 60;
-                        counter = 0;
                 }
             }
-            interval = setInterval(taskManger, 1000)
+            interval = setInterval(taskManger, 999)
         }else if(condition === false){
             clearInterval(interval);
             props.startStop();
@@ -46,9 +43,6 @@ class Controller extends Component {
         }
     }
     render() {
-        min = Number(this.props.timer.min * 60);
-        sec = Number(this.props.timer.sec);
-        timeLabel = this.props.currentTime;
         return ( 
             <div className="controller-continer">
                 <button id="start_stop" onClick={()=>this.handleClick(this.props, this.props.isPlay)}>
