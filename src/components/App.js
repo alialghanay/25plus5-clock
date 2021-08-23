@@ -13,8 +13,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="flip">
-        <Break />
-        <Session />
+          <Break />
+          <Session />
         </div>
         <Clock />
         <AudioDiv />

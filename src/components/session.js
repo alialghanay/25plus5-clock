@@ -10,10 +10,10 @@ class Session extends Component {
                 <h3 id="session-label">Session Length</h3>
                 <div className="session-btt">
                     <button id="session-decrement" onClick={this.props.sessionD}>
-                    <img src={dUArrow}/>
+                    <img src={dUArrow} alt="Down-Arrow"/>
                     </button>
                     <button id="session-increment" onClick={this.props.sessionI}>
-                    <img src={dUArrow}/>
+                    <img src={dUArrow} alt="Up-Arrow"/>
                     </button>
                 </div>
                 <p id="session-length">{this.props.sessionLength}</p>

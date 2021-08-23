@@ -35,7 +35,7 @@ class Controller extends Component {
                         counter = 0;
                 }
             }
-            interval = setInterval(taskManger, 500)
+            interval = setInterval(taskManger, 1000)
         }else if(condition === false){
             clearInterval(interval);
             props.startStop();
@@ -52,10 +52,10 @@ class Controller extends Component {
         return ( 
             <div className="controller-continer">
                 <button id="start_stop" onClick={()=>this.handleClick(this.props, this.props.isPlay)}>
-                <img src={playPause}/>
+                <img src={playPause} alt="Play-Pause-Arrow"/>
                 </button>
                 <button id="reset" onClick={() => this.handleClick(this.props, this.props.reset().type)}>
-                    <img src={repeatArrow}/>
+                    <img src={repeatArrow} alt="Reset-Arrows"/>
                 </button>
             </div>
         );

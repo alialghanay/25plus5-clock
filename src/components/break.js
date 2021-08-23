@@ -10,10 +10,10 @@ class Break extends Component {
                 <h3 id="break-label">Break Length</h3>
                 <div className="break-btt">
                     <button id="break-decrement" onClick={this.props.breakD}>
-                        <img src={dUArrow}/>
+                        <img src={dUArrow} alt="Down-Arrow"/>
                     </button>
                     <button id="break-increment" onClick={this.props.breakI}>
-                    <img src={dUArrow}/>
+                    <img src={dUArrow} alt="Up-Arrow"/>
                     </button>
                 </div>
                 <p id="break-length">{this.props.breakLength}</p>
