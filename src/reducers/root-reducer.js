@@ -1,5 +1,5 @@
 import IniState from "./iniState.json";
-import { TimeManager, minFManger } from "./time-manager";
+import {TimeManager}  from "./time-manager";
 
 function rootReducer(state = IniState, action){
     switch (action.type){
@@ -23,8 +23,8 @@ function rootReducer(state = IniState, action){
                     ...state,
                     "sessionLength": TimeManager("Increment", state.sessionLength),
                     "timer": {
-                        "min": minFManger(TimeManager("Increment", state.sessionLength)),
-                        "sec": "00"
+                        "min": TimeManager("Increment", state.sessionLength),
+                        "sec": 0
                     }
                 }
             }else return {...state};
@@ -34,8 +34,8 @@ function rootReducer(state = IniState, action){
                     ...state,
                     "sessionLength": TimeManager("Decrement", state.sessionLength),
                     "timer": {
-                        "min": minFManger(TimeManager("Decrement", state.sessionLength)),
-                        "sec": "00"
+                        "min": TimeManager("Decrement", state.sessionLength),
+                        "sec": 0
                     }
                 }
             }else return {...state};
@@ -48,8 +48,8 @@ function rootReducer(state = IniState, action){
             return {
                 ...state,
                 "timer": {
-                    "min": minFManger(action.min),
-                    "sec": minFManger(action.sec)
+                    "min": action.min,
+                    "sec": action.sec
                 },
                 "currentTime": action.ct
             }

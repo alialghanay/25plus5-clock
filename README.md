@@ -2,7 +2,7 @@
 
 This project was Create Originally for Passing [FreeCodeCamp](https://freecodecamp.org) Challenge.
 
-## Version 2.0
+## Version 2.2
 
 This Version That I Developed to Study with.
 

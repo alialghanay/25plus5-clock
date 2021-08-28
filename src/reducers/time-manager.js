@@ -1,4 +1,4 @@
-export function TimeManager(action, currentState, breakLn, prop){
+export function TimeManager(action, currentState){
     switch (action){
       case "Increment":
         return (currentState < 60) ? currentState + 1 : currentState;

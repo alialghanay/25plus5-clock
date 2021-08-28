@@ -4,10 +4,10 @@ import beep from "./sound/beep.mp3";
 
 
 class AudioDiv extends Component {    
-    componentDidUpdate(p){
+    componentDidUpdate(){
     const audioTag = document.getElementById("beep");
     if(this.props.audioState > 0){
-        audioTag.play()
+        audioTag.play();
     }else {
         audioTag.pause();
         audioTag.currentTime = 0;

@@ -8,38 +8,40 @@ var interval;
 
 class Controller extends Component {
     handleClick(props, condition){
-        var currentState = props.sessionLn * 60;
+        var currentState = props.timer.min * 60 + props.timer.sec;
         var timeLabel = props.currentTime;
-        if(condition === true){
+        if(condition === "reset"){
+            props.reset();
+            clearInterval(interval);
+        }else if(condition === true){
             props.startStop();
             function taskManger(){
                 currentState--;
-                props.clock(
-                    Math.floor(currentState / 60),
-                    currentState % 60,
-                    timeLabel
-                );
+                props.clock(Math.floor(currentState / 60), currentState % 60, timeLabel);
                 if(currentState <= 0 && timeLabel === "Session"){
+                    clearInterval(interval);
                     props.audio();
-                    currentState = 0;
-                    props.count();
-                    timeLabel = "Break";
-                    currentState = props.breakLn * 60;
+                    setTimeout(()=>{
+                        currentState = 0;
+                        props.count();
+                        timeLabel = "Break";
+                        currentState = props.breakLn * 60;
+                        props.clock(Math.floor(currentState / 60), currentState % 60, timeLabel);
+                        interval = setInterval(taskManger, 1000);}, 3000)
                 }else if(currentState <= 0){
-                    currentState = 0;
-                        props.audio();
+                    clearInterval(interval);
+                    props.audio();
+                    setTimeout(()=>{currentState = 0;
                         timeLabel = "Session";
                         currentState = props.sessionLn * 60;
+                        props.clock(Math.floor(currentState / 60), currentState % 60, timeLabel);
+                        interval = setInterval(taskManger, 1000);}, 3000)
                 }
             }
-            interval = setInterval(taskManger, 999)
+            interval = setInterval(taskManger, 1000)
         }else if(condition === false){
             clearInterval(interval);
             props.startStop();
-        }else if(condition === "reset"){
-            timeLabel = "Session";
-            clearInterval(interval);
-            props.reset();
         }
     }
     render() {

@@ -4,8 +4,8 @@
     "sessionLength": 25,
     "isPlay": true,
     "timer": {
-        "min": "25",
-        "sec": "00"
+        "min": 25,
+        "sec": 0
     },
     "counter": 0,
     "audioState": 0
